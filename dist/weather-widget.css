@@ -1,5 +1,7 @@
-body {
-  background: white;
+.weather-widget {
+  width: 10px;
+  height: 10px;
+  background: blue;
 }
 
 /*# sourceMappingURL=weather-widget.css.map */

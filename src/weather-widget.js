@@ -1,13 +1,10 @@
-(function($) {
+(function($, ls) {
 	"use strict";
-
-	var lsLite = lsLite || null;
 
 	/*
 	 * Only gets called when we're using $('$el').weatherWidget format
 	 */
 	var WeatherWidget = function(el, customOptions) {
-
 		var _ = this;
 		_.$el = $(el).addClass('weather-grid');
 		_.defaults = WeatherWidget.defaults;
@@ -17,12 +14,11 @@
 			_.options = $.extend(_.defaults, customOptions);
 
 			var url = _.configureSearch(_.options);
-			_.pollAPI(url, _.options.cacheTime, _.test);
+			_.pollAPI(url, _.options.cacheTime, _.makeWidget);
 		};
 
 		_.init();
 	};
-
 
 	/*
 	 * Default Values
@@ -33,7 +29,7 @@
 		url: 'https://api.forecast.io/forecast/',
 		key: '50efc01999c6c329ae64ade7449047fe',
 		// How long we'd like to store the request results (minutes)
-		cacheTime: 0
+		cacheTime: 30
 	};
 
 	/*
@@ -49,7 +45,8 @@
 	WeatherWidget.prototype.pollAPI = function(url, cacheTime, callback) {
 		var _ = this, data;
 		if(_ instanceof WeatherWidget) {
-			data = lsLite ? lsLite.get(url, cacheTime) : false;
+			console.log(ls);
+			data = ls ? ls.get(url, cacheTime) : false;
 		}
 		if(data) {
 			callback.call(_, data);
@@ -60,8 +57,8 @@
 			url: url,
 			success: function(data) {
 				console.log(data);
-				if(lsLite)
-					lsLite.set(url, data);
+				if(ls)
+					ls.set(url, data);
 				if(callback) {
 					callback.call(_, data);
 				}
@@ -72,8 +69,14 @@
 		});
 	};
 
-	WeatherWidget.prototype.makeGrid = function(apiData) {
+	WeatherWidget.prototype.makeWidget = function(apiData) {
 		console.log(apiData);
+		var currently = apiData.currently;
+		var _ = this;
+		var header = '<h1>' + currently.temperature + ' degrees</h1>';
+		header += '<h2>' + currently.summary + '</h2>';
+		var $header = $(header);
+		_.$el.append($header);
 	};
 
 	// Extend JQuery fn for $('$id').weatherWidget()
@@ -89,4 +92,4 @@
 		weatherWidget: WeatherWidget.prototype
 	});
 
-})(jQuery);
+})(jQuery, typeof lsLite != 'undefined' ? lsLite : null);
