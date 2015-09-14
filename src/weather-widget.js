@@ -7,14 +7,10 @@
 	var WeatherWidget = function(el, customOptions) {
 		var _ = this;
 		_.$el = $(el).addClass('weather-grid');
-		_.defaults = WeatherWidget.defaults;
+		_.defaults = defaults;
 
 		_.init = function() {
-			// Merge defaults and customOptions into options
-			_.options = $.extend(_.defaults, customOptions);
-
-			var url = _.configureSearch(_.options);
-			_.pollAPI(url, _.options.cacheTime, _.makeWidget);
+			_.pollAPI(customOptions, _.makeWidget);
 		};
 
 		_.init();
@@ -23,7 +19,7 @@
 	/*
 	 * Default Values
 	 */
-	WeatherWidget.defaults = {
+	var defaults = {
 		lat: '40.748441',
 		lon: '-73.985793',
 		url: 'https://api.forecast.io/forecast/',
@@ -35,19 +31,19 @@
 	/*
 	 * Configure parameters for API
 	 */
-	WeatherWidget.prototype.configureSearch = function(options) {
+	WeatherWidget.prototype.makeURL = function(options) {
 		return options.url + options.key + '/' + options.lat + ',' + options.lon;
 	};
 
 	/*
 	 * Main API polling function
 	 */
-	WeatherWidget.prototype.pollAPI = function(url, cacheTime, callback) {
-		var _ = this, data;
-		if(_ instanceof WeatherWidget) {
-			console.log(ls);
-			data = ls ? ls.get(url, cacheTime) : false;
-		}
+	WeatherWidget.prototype.pollAPI = function(options, callback) {
+		var _ = this,
+			options = $.extend(defaults, options),
+			url = _.makeURL(options),
+			data = ls ? ls.get(url, options.cacheTime) : false;
+
 		if(data) {
 			callback.call(_, data);
 			return false;
@@ -56,7 +52,6 @@
 			dataType: 'jsonp',
 			url: url,
 			success: function(data) {
-				console.log(data);
 				if(ls)
 					ls.set(url, data);
 				if(callback) {

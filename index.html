@@ -14,7 +14,16 @@
         <script src="dist/weather-widget.js"></script>
         <script>
             $( document ).ready(function() {
-                $('.example').weatherWidget();
+                $('.example').weatherWidget({
+                    lat: 1
+                });
+
+                $.weatherWidget.pollAPI({
+                    lat: 2,
+                    cacheTime: 30
+                }, function(data) {
+                    console.log('here\'s some data: ', data);
+                });
             });
         </script>
 	</body>
