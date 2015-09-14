@@ -1,0 +1,24 @@
+{
+  "name": "weather-widget",
+  "version": "0.0.1",
+  "description": "Weather Widget",
+  "dependencies": {
+    "jquery": "~1.10.2",
+    "local-storage-lite": "*"
+  },
+  "homepage": "https://github.com/BlueBiteLLC/Weather-Widget.git",
+  "authors": [
+    "Matt O'Connell <mattoconnell408@gmail.com>"
+  ],
+  "keywords": [
+    "weather",
+    "jquery",
+    "widget"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}
