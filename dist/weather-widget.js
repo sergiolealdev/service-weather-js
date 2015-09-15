@@ -48,7 +48,12 @@
 		key: '50efc01999c6c329ae64ade7449047fe',
 		// How long we'd like to store the request results (minutes)
 		cacheTime: 30,
-		geoLocate: true
+		geoLocate: true,
+		celsius: false
+	};
+
+	var convert = function(f) {
+	    return Math.round((f - 32) * 5/9);
 	};
 
 	/*
@@ -66,7 +71,7 @@
 			options = $.extend(defaults, options),
 			url = _.makeURL(options),
 			data = ls ? ls.get(url, options.cacheTime) : false;
-
+		_.options = options;
 		if(data) {
 			callback.call(_, data);
 			return false;
@@ -98,13 +103,14 @@
 	];
 
 	WeatherWidget.prototype.makeWidget = function(apiData) {
-		var currently = apiData.currently,
+		var shouldConvert = this instanceof WeatherWidget && this.options.celsius ? true : false,
+			currently = apiData.currently,
 			hourly = apiData.hourly.data,
 			daily = apiData.daily.data;
 		var _ = this;
 		var $header = $(
 			'<div class="header">' +
-			'<span>' + Math.round(currently.temperature) + '&deg;</span>' +
+			'<span>' + Math.round(shouldConvert ? convert(currently.temperature) : currently.temperature) + '&deg;</span>' +
 			'<span>' + currently.summary + '</span>' +
 			'<span class="icon ' + currently.icon + '"></span>' +
 			'</div>'
@@ -117,6 +123,7 @@
 				icon = hourly[i + 1].icon,
 				hour = (new Date()).getHours() + i,
 				ampm = hour >= 12 ? 'pm' : 'am';
+			temp = shouldConvert ? convert(temp) : temp;
 			if(hour > 23) {
 				hour = Math.abs(23 - hour);
 				ampm = 'am';
@@ -142,6 +149,8 @@
 				icon = daily[k].icon,
 				max = Math.round(daily[k].temperatureMax),
 				min = Math.round(daily[k].temperatureMin);
+			max = shouldConvert ? convert(max) : max;
+			min = shouldConvert ? convert(min) : min;
 			$daily
 				.append($(
 					'<div><span class="day">' + day + '</span>' +
