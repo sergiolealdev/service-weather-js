@@ -5,14 +5,17 @@ Creates a weather widget using forecast.io API
 
 Include using Bower (all scripts are located within bower_components directory):
 
-```
+```sh
 bower install weather-widget
 ```
 
 OR, download zip and include scripts manually. All production-ready scripts are in the dist/ directory.
 
-```
+```html
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- These are optional scripts -->
+<!-- <script src="bower_components/local-storage-lite/ls.js"></script> -->
+<!-- <script src="bower_components/geo-lite/geo-lite.js"></script> -->
 <script src="weather-widget.js"></script>
 ```
 
@@ -34,14 +37,14 @@ As with local-storage-lite, include this before weather-widget.js. This will aut
 ### Styles
 Include css file in head:
 
-```
+```html
 <link rel="stylesheet" href="weather-widget.css">
 ```
 
 
 ### Set Up the Widget
 
-```
+```html
 <div class="my-class"></div>
 ```
 
