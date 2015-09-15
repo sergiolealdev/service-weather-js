@@ -1,7 +1,85 @@
 .weather-widget {
-  width: 10px;
-  height: 10px;
-  background: blue;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+.weather-widget .hourly div {
+  width: 20%;
+  float: left;
+  text-align: center;
+}
+.weather-widget .hourly span {
+  display: block;
+}
+.weather-widget .daily div {
+  width: 100%;
+  clear: left;
+  font-size: 18px;
+  height: 32px;
+  float: left;
+}
+.weather-widget .daily div.daily-title {
+  margin-top: 16px;
+}
+.weather-widget .daily div.daily-title span {
+  width: 15%;
+}
+.weather-widget .daily div.daily-title span:first-child {
+  width: 70%;
+}
+.weather-widget .daily span {
+  display: inline-block;
+  float: left;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.weather-widget .daily span.day {
+  width: 30%;
+}
+.weather-widget .daily span.icon {
+  width: 40%;
+  height: 32px;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.weather-widget .daily span.max, .weather-widget .daily span.min {
+  width: 15%;
+}
+.weather-widget .icon {
+  width: 48px;
+  height: 48px;
+  background-size: 100%;
+  margin: 4px auto;
+}
+.weather-widget .icon.partly-cloudy-night {
+  background-image: url("img/partly-cloudy-night.png");
+}
+.weather-widget .icon.partly-cloudy-day {
+  background-image: url("img/partly-cloudy-day.png");
+}
+.weather-widget .icon.clear-night {
+  background-image: url("img/clear-night.png");
+}
+.weather-widget .icon.clear-day {
+  background-image: url("img/clear-day.png");
+}
+.weather-widget .icon.cloudy {
+  background-image: url("img/cloudy.png");
+}
+.weather-widget .icon.sleet {
+  background-image: url("img/sleet.png");
+}
+.weather-widget .icon.rain {
+  background-image: url("img/rain.png");
+}
+.weather-widget .icon.snow {
+  background-image: url("img/snow.png");
+}
+.weather-widget .icon.wind {
+  background-image: url("img/wind.png");
+}
+.weather-widget .icon.fog {
+  background-image: url("img/fog.png");
 }
 
 /*# sourceMappingURL=weather-widget.css.map */

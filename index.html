@@ -15,12 +15,10 @@
         <script>
             $( document ).ready(function() {
                 $('.example').weatherWidget({
-                    lat: 1
                 });
 
                 $.weatherWidget.pollAPI({
-                    lat: 2,
-                    cacheTime: 30
+                    cacheTime: 0
                 }, function(data) {
                     console.log('here\'s some data: ', data);
                 });

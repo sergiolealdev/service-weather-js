@@ -1,4 +1,67 @@
+$margin-small: 4px
+$margin-medium: 8px
+$margin-large: 16px
+
 .weather-widget
-    width: 10px
-    height: 10px
-    background: blue
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-weight: 300
+    .hourly
+        div
+            width: 20%
+            float: left
+            text-align: center
+        span
+            display: block
+    .daily
+        div
+            width: 100%
+            clear: left
+            font-size: 18px
+            height: 32px
+            float: left
+            &.daily-title
+                margin-top: 16px
+                span
+                    width: 15%
+                    &:first-child
+                        width: 70%
+        span
+            display: inline-block
+            float: left
+            margin-bottom: 8px
+            line-height: 1.6
+            &.day
+                width: 30%
+            &.icon
+                width: 40%
+                height: 32px
+                background-size: auto 100%
+                background-repeat: no-repeat
+                background-position: center
+            &.max, &.min
+                width: 15%
+    .icon
+        width: 48px
+        height: 48px
+        background-size: 100%
+        margin: $margin-small auto
+        &.partly-cloudy-night
+            background-image: url('img/partly-cloudy-night.png')
+        &.partly-cloudy-day
+            background-image: url('img/partly-cloudy-day.png')
+        &.clear-night
+            background-image: url('img/clear-night.png')
+        &.clear-day
+            background-image: url('img/clear-day.png')
+        &.cloudy
+            background-image: url('img/cloudy.png')
+        &.sleet
+            background-image: url('img/sleet.png')
+        &.rain
+            background-image: url('img/rain.png')
+        &.snow
+            background-image: url('img/snow.png')
+        &.wind
+            background-image: url('img/wind.png')
+        &.fog
+            background-image: url('img/fog.png')
