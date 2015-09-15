@@ -2,6 +2,24 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
+.weather-widget .header {
+  height: 50px;
+  margin-bottom: 20px;
+}
+.weather-widget .header span {
+  font-size: 23px;
+  text-align: center;
+  width: 33%;
+  display: block;
+  float: left;
+  margin-top: 10px;
+}
+.weather-widget .header span:last-child {
+  margin: 0;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .weather-widget .hourly div {
   width: 20%;
   float: left;
@@ -13,11 +31,11 @@
 .weather-widget .daily div {
   width: 100%;
   clear: left;
-  font-size: 18px;
   height: 32px;
   float: left;
 }
 .weather-widget .daily div.daily-title {
+  font-size: 18px;
   margin-top: 16px;
 }
 .weather-widget .daily div.daily-title span {

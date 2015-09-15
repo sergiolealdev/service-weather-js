@@ -5,6 +5,21 @@ $margin-large: 16px
 .weather-widget
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
     font-weight: 300
+    .header
+        height: 50px
+        margin-bottom: 20px
+        span
+            font-size: 23px
+            text-align: center
+            width: 33%
+            display: block
+            float: left
+            margin-top: 10px
+            &:last-child
+                margin: 0
+                background-size: auto 100%
+                background-repeat: no-repeat
+                background-position: center
     .hourly
         div
             width: 20%
@@ -16,10 +31,10 @@ $margin-large: 16px
         div
             width: 100%
             clear: left
-            font-size: 18px
             height: 32px
             float: left
             &.daily-title
+                font-size: 18px
                 margin-top: 16px
                 span
                     width: 15%

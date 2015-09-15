@@ -97,12 +97,14 @@
 			daily = apiData.daily.data;
 		var _ = this;
 		var $header = $(
-			'<h1>' + currently.temperature + '&deg;</h1>' +
-			'<h2>' + currently.summary + '</h2>'
+			'<div class="header">' +
+			'<span>' + Math.round(currently.temperature) + '&deg;</span>' +
+			'<span>' + currently.summary + '</span>' +
+			'<span class="icon ' + currently.icon + '"></span>' +
+			'</div>'
 		);
 		var $hourly = $('<div class="hourly"></div>');
 		var $daily = $('<div class="daily"></div>');
-
 
 		for(var i = 0; i < 5; i++) {
 			var temp = Math.round(hourly[i + 1].temperature),
