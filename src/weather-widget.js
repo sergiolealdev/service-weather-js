@@ -40,12 +40,14 @@
 		lon: '-73.985793',
 		url: 'https://api.forecast.io/forecast/',
 		key: '50efc01999c6c329ae64ade7449047fe',
-		// How long we'd like to store the request results (minutes)
 		cacheTime: 30,
 		geoLocate: true,
 		celsius: false
 	};
 
+	/*
+	 * Convert fahranheit to celsius
+	 */
 	var convert = function(f) {
 	    return Math.round((f - 32) * 5/9);
 	};
