@@ -19,7 +19,23 @@
 			_.pollAPI(customOptions, _.makeWidget);
 		};
 
-		_.init();
+		if(_.defaults.geoLocate
+			&& typeof geoLite !== 'undefined'
+			&& geoLite.locateOnLoad) {
+				document.body.addEventListener('onLocateSuccess', function() {
+					var coords = {
+						lat: geoLite.lat,
+						lon: geoLite.lon
+					};
+					customOptions = $.extend(customOptions, coords);
+					_.init();
+				});
+				document.body.addEventListener('onLocateFail', function() {
+					_.init();
+				});
+		} else {
+			_.init();
+		}
 	};
 
 	/*
@@ -31,7 +47,8 @@
 		url: 'https://api.forecast.io/forecast/',
 		key: '50efc01999c6c329ae64ade7449047fe',
 		// How long we'd like to store the request results (minutes)
-		cacheTime: 30
+		cacheTime: 30,
+		geoLocate: true
 	};
 
 	/*
@@ -94,11 +111,11 @@
 
 
 		for(var i = 0; i < 5; i++) {
-			var temp = Math.round(hourly[i+1].temperature),
-				icon = hourly[i+1].icon,
+			var temp = Math.round(hourly[i + 1].temperature),
+				icon = hourly[i + 1].icon,
 				hour = (new Date()).getHours() + i,
 				ampm = hour >= 12 ? 'pm' : 'am';
-			if (hour > 23) {
+			if(hour > 23) {
 				hour = Math.abs(23 - hour);
 				ampm = 'am';
 			}

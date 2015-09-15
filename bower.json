@@ -4,7 +4,8 @@
   "description": "Weather Widget",
   "dependencies": {
     "jquery": "~1.10.2",
-    "local-storage-lite": "*"
+    "local-storage-lite": "*",
+    "geolocate-lite": "*"
   },
   "homepage": "https://github.com/BlueBiteLLC/Weather-Widget.git",
   "authors": [
