@@ -129,9 +129,11 @@
 
 			$hourly
 				.append($(
-					'<div><span class="time">' + hour + ampm + '</span>' +
+					'<div>' +
+					'<span class="time">' + hour + ampm + '</span>' +
 					'<span class="icon ' + icon + '"></span>' +
-					'<span class="temp">' + temp + '&deg;</span></div>'
+					'<span class="temp">' + temp + '&deg;</span>' +
+					'</div>'
 				));
 		}
 
