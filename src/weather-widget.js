@@ -102,17 +102,18 @@
 		var shouldConvert = this instanceof WeatherWidget && this.options.celsius ? true : false,
 			currently = apiData.currently,
 			hourly = apiData.hourly.data,
-			daily = apiData.daily.data;
-		var _ = this;
-		var $header = $(
-			'<div class="header">' +
-			'<span>' + Math.round(shouldConvert ? convert(currently.temperature) : currently.temperature) + '&deg;</span>' +
-			'<span>' + currently.summary + '</span>' +
-			'<span class="icon ' + currently.icon + '"></span>' +
-			'</div>'
-		);
-		var $hourly = $('<div class="hourly"></div>');
-		var $daily = $('<div class="daily"></div>');
+			daily = apiData.daily.data,
+			_ = this,
+			currentTemp = Math.round(shouldConvert ? convert(currently.temperature) : currently.temperature),
+			$header = $(
+				'<div class="header">' +
+				'<span>' + currentTemp + '&deg;</span>' +
+				'<span>' + currently.summary + '</span>' +
+				'<span class="icon ' + currently.icon + '"></span>' +
+				'</div>'
+			),
+			$hourly = $('<div class="hourly"></div>'),
+			$daily = $('<div class="daily"></div>');
 
 		for(var i = 0; i < 5; i++) {
 			var temp = Math.round(hourly[i + 1].temperature),
