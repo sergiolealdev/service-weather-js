@@ -161,7 +161,6 @@
 		    $daily.removeClass('active');
 		});
 		$daily.find('.daily-title:first-child').click(function() {
-			console.log('wtf');
 		    $daily.addClass('active');
 		});
 
