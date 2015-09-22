@@ -4,15 +4,14 @@
 }
 .weather-widget .header {
   height: 50px;
-  margin-bottom: 20px;
 }
 .weather-widget .header span {
-  font-size: 23px;
+  font-size: 17px;
   text-align: center;
   width: 33%;
   display: block;
   float: left;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .weather-widget .header span:last-child {
   margin: 0;
@@ -28,30 +27,58 @@
 .weather-widget .hourly span {
   display: block;
 }
+.weather-widget .hourly span:first-child {
+  font-size: 14px;
+  color: darkgrey;
+}
+.weather-widget .daily.active div {
+  display: block;
+}
+.weather-widget .daily.active .less {
+  display: block;
+  color: darkgrey;
+  text-decoration: underline;
+}
+.weather-widget .daily.active .daily-title span {
+  display: inline-block;
+}
+.weather-widget .daily.active .daily-title span:first-child {
+  text-decoration: none;
+}
+.weather-widget .daily .less {
+  display: none;
+}
 .weather-widget .daily div {
   width: 100%;
   clear: left;
   height: 32px;
   float: left;
+  display: none;
 }
 .weather-widget .daily div.daily-title {
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 16px;
+  display: block;
 }
 .weather-widget .daily div.daily-title span {
   width: 15%;
+  display: none;
 }
 .weather-widget .daily div.daily-title span:first-child {
   width: 70%;
+  display: inline-block;
+  text-decoration: underline;
 }
 .weather-widget .daily span {
   display: inline-block;
   float: left;
   margin-bottom: 8px;
-  line-height: 1.6;
+  line-height: 2.5;
 }
 .weather-widget .daily span.day {
   width: 30%;
+  font-weight: 400;
+  font-size: 16px;
 }
 .weather-widget .daily span.icon {
   width: 40%;

@@ -129,11 +129,9 @@
 
 			$hourly
 				.append($(
-					'<div>' +
-					'<span class="time">' + hour + ampm + '</span>' +
+					'<div><span class="time">' + hour + ampm + '</span>' +
 					'<span class="icon ' + icon + '"></span>' +
-					'<span class="temp">' + temp + '&deg;</span>' +
-					'</div>'
+					'<span class="temp">' + temp + '&deg;</span></div>'
 				));
 		}
 
@@ -143,10 +141,10 @@
 			'</div>'
 		));
 		for(var k = 0; k < 7; k++) {
-			var day = days[new Date(daily[k].time * 1000).getDay()],
-				icon = daily[k].icon,
-				max = Math.round(daily[k].temperatureMax),
-				min = Math.round(daily[k].temperatureMin);
+			var day = days[new Date(daily[k + 1].time * 1000).getDay()],
+				icon = daily[k + 1].icon,
+				max = Math.round(daily[k + 1].temperatureMax),
+				min = Math.round(daily[k + 1].temperatureMin);
 			max = shouldConvert ? convert(max) : max;
 			min = shouldConvert ? convert(min) : min;
 			$daily
@@ -157,6 +155,16 @@
 					'<span class="min">' + min + '&deg;</span></div>'
 				));
 		}
+		var $less = $('<span class="less">Less</span>');
+		$daily.append($less);
+		$less.click(function() {
+		    $daily.removeClass('active');
+		});
+		$daily.find('.daily-title:first-child').click(function() {
+			console.log('wtf');
+		    $daily.addClass('active');
+		});
+
 		var $widget = _.$el
 			.append($header)
 			.append($hourly)

@@ -7,14 +7,13 @@ $margin-large: 16px
     font-weight: 300
     .header
         height: 50px
-        margin-bottom: 20px
         span
-            font-size: 23px
+            font-size: 17px
             text-align: center
             width: 33%
             display: block
             float: left
-            margin-top: 10px
+            margin-top: 15px
             &:last-child
                 margin: 0
                 background-size: auto 100%
@@ -27,26 +26,50 @@ $margin-large: 16px
             text-align: center
         span
             display: block
+            &:first-child
+                font-size: 14px
+                color: darkgrey
     .daily
+        &.active
+            div
+                display: block
+            .less
+                display: block
+                color: darkgrey
+                text-decoration: underline
+            .daily-title
+                span
+                    display: inline-block
+                    &:first-child
+                        text-decoration: none
+        .less
+            display: none
         div
             width: 100%
             clear: left
             height: 32px
             float: left
+            display: none
             &.daily-title
-                font-size: 18px
+                font-size: 16px
                 margin-top: 16px
+                display: block
                 span
                     width: 15%
+                    display: none
                     &:first-child
                         width: 70%
+                        display: inline-block
+                        text-decoration: underline
         span
             display: inline-block
             float: left
             margin-bottom: 8px
-            line-height: 1.6
+            line-height: 2.5
             &.day
                 width: 30%
+                font-weight: 400
+                font-size: 16px
             &.icon
                 width: 40%
                 height: 32px
