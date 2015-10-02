@@ -38,6 +38,7 @@
   display: block;
   color: darkgrey;
   text-decoration: underline;
+  width: 100%;
 }
 .weather-widget .daily.active .daily-title span {
   display: inline-block;
