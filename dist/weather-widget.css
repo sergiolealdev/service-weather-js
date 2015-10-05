@@ -3,10 +3,14 @@
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   padding: 15px;
+  clear: left;
+}
+.weather-widget br {
+  clear: both;
 }
 .weather-widget p.title {
   font-size: 20px;
-  margin: 10px 0 5px 0px;
+  margin: 10px 0 5px 0;
 }
 .weather-widget .header {
   height: 50px;
@@ -101,9 +105,6 @@
   text-align: left;
   display: inline-block;
   text-decoration: underline;
-}
-.weather-widget .daily div.daily-title br {
-  clear: both;
 }
 .weather-widget .daily span {
   display: inline-block;
