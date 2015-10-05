@@ -93,9 +93,11 @@
 .weather-widget .daily div.daily-title span {
   width: 15%;
   display: none;
+  text-align: center;
 }
 .weather-widget .daily div.daily-title span:first-child {
   width: 70%;
+  text-align: left;
   display: inline-block;
   text-decoration: underline;
 }
@@ -122,6 +124,7 @@
 }
 .weather-widget .daily span.max, .weather-widget .daily span.min {
   width: 15%;
+  text-align: center;
 }
 .weather-widget .icon {
   width: 48px;
