@@ -1,17 +1,18 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto:300,400");
 .weather-widget {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
 .weather-widget p.title {
   font-size: 20px;
-  margin: 5px 0 0 10px;
+  margin: 10px 0 5px 10px;
 }
 .weather-widget .header {
   height: 50px;
   font-size: 17px;
   display: block;
   float: left;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   width: 100%;
 }
 .weather-widget .header > div {
@@ -75,6 +76,7 @@
 }
 .weather-widget .daily .less {
   display: none;
+  font-size: 14px;
 }
 .weather-widget .daily div {
   width: 100%;
@@ -84,7 +86,7 @@
   display: none;
 }
 .weather-widget .daily div.daily-title {
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 8px;
   display: block;
 }
