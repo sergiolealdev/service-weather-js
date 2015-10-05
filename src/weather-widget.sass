@@ -5,25 +5,47 @@ $margin-large: 16px
 .weather-widget
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
     font-weight: 300
+    p.title
+        font-size: 20px
+        margin: 5px 0 0 10px
     .header
         height: 50px
-        span
-            font-size: 17px
-            text-align: center
-            width: 33%
-            display: block
+        font-size: 17px
+        display: block
+        float: left
+        margin-bottom: 20px
+        width: 100%
+        >div
             float: left
-            margin-top: 15px
-            &:last-child
-                margin: 0
-                background-size: auto 100%
-                background-repeat: no-repeat
-                background-position: center
+            box-sizing: border-box
+            padding: 10px
+            span
+                &:first-child
+                    font-size: 22px
+                &:last-child
+                    color: darkgrey
+        span
+            display: block
+        .icon
+            height: 72px
+            margin: 0
+            display: block
+            width: 20%
+            background-size: auto 100%
+            background-repeat: no-repeat
+            background-position: top left
+            float: left
     .hourly
         div
-            width: 20%
+            width: 22%
             float: left
             text-align: center
+            &:first-child
+                width: 12%
+                margin-right: 3%
+            &:last-child
+                width: 12%
+                margin-left: 3%
         span
             display: block
             &:first-child
@@ -53,7 +75,7 @@ $margin-large: 16px
             display: none
             &.daily-title
                 font-size: 16px
-                margin-top: 16px
+                margin-top: 8px
                 display: block
                 span
                     width: 15%
@@ -62,6 +84,8 @@ $margin-large: 16px
                         width: 70%
                         display: inline-block
                         text-decoration: underline
+                br
+                    clear: both
         span
             display: inline-block
             float: left

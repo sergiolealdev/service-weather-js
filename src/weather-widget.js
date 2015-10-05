@@ -106,10 +106,11 @@
 			_ = this,
 			currentTemp = Math.round(shouldConvert ? convert(currently.temperature) : currently.temperature),
 			$header = $(
+				'<p class="title">Local Weather</p>' +
 				'<div class="header">' +
-				'<span>' + currentTemp + '&deg;</span>' +
-				'<span>' + currently.summary + '</span>' +
 				'<span class="icon ' + currently.icon + '"></span>' +
+				'<div><span>' + currentTemp + '&deg;</span>' +
+				'<span>' + currently.summary + '</span></div>' +
 				'</div>'
 			),
 			$hourly = $('<div class="hourly"></div>'),
@@ -138,7 +139,7 @@
 
 		$daily.append($(
 			'<div class="daily-title">' +
-			'<span>7 Day Forecast</span><span>High</span><span>Low</span>' +
+			'<span>7 Day Forecast</span><span>High</span><span>Low</span><br>' +
 			'</div>'
 		));
 		for(var k = 0; k < 7; k++) {
@@ -156,7 +157,7 @@
 					'<span class="min">' + min + '&deg;</span></div>'
 				));
 		}
-		var $less = $('<span class="less">Less</span>');
+		var $less = $('<span class="less">Less</span><br>');
 		$daily.append($less);
 		$less.click(function() {
 		    $daily.removeClass('active');
