@@ -4,6 +4,12 @@
  * License: MIT
  */
  
+/*
+ * jQuery Weather Widget
+ * 2015 Matt O'Connell <mattoconnell408@gmail.com> 
+ * License: MIT
+ */
+ 
 (function($, ls) {
 	"use strict";
 
