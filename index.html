@@ -15,7 +15,9 @@
         <script src="dist/weather-widget.js"></script>
         <script>
             $( document ).ready(function() {
-                $('.example').weatherWidget();
+                $('.example').weatherWidget({
+                    imgPath: 'dist/img/'
+                });
 
                 $.weatherWidget.pollAPI({
                     cacheTime: 0

@@ -42,7 +42,8 @@
 		key: '50efc01999c6c329ae64ade7449047fe',
 		cacheTime: 30,
 		geoLocate: true,
-		celsius: false
+		celsius: false,
+		imgPath: 'bower_components/weather-widget/dist/img/'
 	};
 
 	/*
@@ -143,7 +144,7 @@
 		$current.append(
 			$('<img>')
 				.addClass('icon')
-				.attr('src', 'dist/img/' + currently.icon + '.png')
+				.attr('src', _.options.imgPath + currently.icon + '.png')
 		).append(
 			$('<span>')
 				.addClass('temperature')
@@ -191,7 +192,7 @@
 				.text(hour + ampm);
 
 			hourClone.find('.icon')
-				.attr('src', 'dist/img/' + icon + '.png');
+				.attr('src', _.options.imgPath + icon + '.png');
 
 			hourClone.find('.temperature')
 				.html(temp + '&deg;');
@@ -247,7 +248,7 @@
 					.append(
 						$('<img>')
 							.addClass('icon')
-							.attr('src', 'dist/img/' + icon + '.png')
+							.attr('src', _.options.imgPath + icon + '.png')
 					)
 					.append(
 						$('<span>')
@@ -266,8 +267,8 @@
 		$widget.append($expandWrapper);
 
 
-		$expandButton.on('click', function(){
-
+		$expandButton.on('click', function(e){
+			e.preventDefault();
 			if ($expandWrapper.hasClass('hide')) {
 				$expandButton.removeClass('more').addClass('less');
 				$expandWrapper.slideDown().removeClass('hide');
@@ -275,7 +276,6 @@
 				$expandButton.removeClass('less').addClass('more');
 				$expandWrapper.slideUp().addClass('hide');
 			}
-
 		});
 
 		_.$el.append($widget);
