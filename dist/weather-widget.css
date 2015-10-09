@@ -1,173 +1,144 @@
 @import url("//fonts.googleapis.com/css?family=Roboto:300,400");
-.weather-widget {
-  -webkit-text-size-adjust: none;
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  padding: 15px 15px 0 15px;
-  clear: left;
-}
-.weather-widget br {
-  clear: both;
-}
-.weather-widget p.title {
-  font-size: 20px;
-  margin: 10px 0 5px 0;
-  font-weight: 400;
-}
-.weather-widget .header {
-  height: 50px;
-  font-size: 17px;
-  display: block;
-  float: left;
-  margin-bottom: 25px;
-  width: 100%;
-}
-.weather-widget .header > div {
-  float: left;
-  box-sizing: border-box;
-  padding: 10px;
-}
-.weather-widget .header > div span:first-child {
-  font-size: 22px;
-}
-.weather-widget .header > div span:last-child {
-  color: darkgrey;
-}
-.weather-widget .header span {
-  display: block;
-}
-.weather-widget .header .icon {
-  height: 72px;
+body {
+  padding: 0;
   margin: 0;
-  display: block;
-  width: 20%;
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: top left;
-  float: left;
 }
-.weather-widget .hourly div {
-  width: 22%;
-  float: left;
-  text-align: center;
+
+div.weather.widget {
+  font-family: "Roboto", sans-serif;
+  padding: 16px;
+  color: #3B3F47;
 }
-.weather-widget .hourly div:first-child {
-  width: 12%;
-  margin-right: 3%;
+div.weather.widget header.title {
+  position: relative;
 }
-.weather-widget .hourly div:last-child {
-  width: 12%;
-  margin-left: 3%;
+div.weather.widget header.title h2.name {
+  font-weight: 300;
+  margin: 0;
+  font-size: 24px;
 }
-.weather-widget .hourly span {
-  display: block;
-}
-.weather-widget .hourly span:first-child {
+div.weather.widget header.title span.description {
+  margin-top: 8px;
+  color: #9B9B9B;
+  font-weight: 500;
   font-size: 14px;
-  color: darkgrey;
 }
-.weather-widget .daily.active div {
-  display: block;
-}
-.weather-widget .daily.active .less {
-  display: block;
-  color: darkgrey;
-  text-decoration: underline;
-  width: 100%;
-}
-.weather-widget .daily.active .daily-title span {
-  display: inline-block;
-}
-.weather-widget .daily.active .daily-title span:first-child {
+div.weather.widget header.title a.expand {
+  font-size: 14px;
+  position: absolute;
+  right: 0;
+  top: 5px;
+  color: #0087CB;
   text-decoration: none;
 }
-.weather-widget .daily .less {
-  display: none;
-  font-size: 14px;
-  margin-bottom: 0;
-  line-height: 1;
-  margin-top: 10px;
+div.weather.widget header.title a.expand.more::before {
+  content: "+ ";
 }
-.weather-widget .daily div {
-  width: 100%;
-  clear: left;
-  height: 32px;
+div.weather.widget header.title a.expand.less::before {
+  content: "- ";
+}
+div.weather.widget section.current {
+  position: relative;
+}
+div.weather.widget section.current img.icon {
+  width: 96px;
+  height: 96px;
+}
+div.weather.widget section.current span.temperature {
+  font-size: 24px;
+  color: #3B3F47;
+  font-weight: 300;
+  position: absolute;
+  top: 24px;
+}
+div.weather.widget section.current span.description {
+  font-size: 18px;
+  color: #9B9B9B;
+  font-weight: 300;
+  position: absolute;
+  top: 52px;
+}
+div.weather.widget section.hourly {
+  position: relative;
+  height: 100px;
+}
+div.weather.widget section.hourly div.hour {
+  position: relative;
+  height: 100%;
   float: left;
-  display: none;
 }
-.weather-widget .daily div.daily-title {
-  font-size: 14px;
-  margin-top: 8px;
-  display: block;
-}
-.weather-widget .daily div.daily-title span {
-  width: 15%;
-  display: none;
-  text-align: center;
-}
-.weather-widget .daily div.daily-title span:first-child {
-  width: 70%;
-  text-align: left;
-  display: inline-block;
-  text-decoration: underline;
-}
-.weather-widget .daily span {
-  display: inline-block;
-  float: left;
-  margin-bottom: 8px;
-  line-height: 2.5;
-}
-.weather-widget .daily span.day {
-  width: 30%;
-  font-weight: 400;
-  font-size: 16px;
-}
-.weather-widget .daily span.icon {
-  width: 40%;
-  height: 32px;
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.weather-widget .daily span.max, .weather-widget .daily span.min {
-  width: 15%;
-  text-align: center;
-}
-.weather-widget .icon {
+div.weather.widget section.hourly div.hour img.icon {
   width: 48px;
   height: 48px;
-  background-size: 100%;
-  margin: 4px auto;
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  margin-left: -24px;
 }
-.weather-widget .icon.partly-cloudy-night {
-  background-image: url("img/partly-cloudy-night.png");
+div.weather.widget section.hourly div.hour span {
+  position: absolute;
+  width: 100%;
+  text-align: center;
 }
-.weather-widget .icon.partly-cloudy-day {
-  background-image: url("img/partly-cloudy-day.png");
+div.weather.widget section.hourly div.hour span.time {
+  top: 0;
+  font-size: 16px;
+  color: #9B9B9B;
+  font-weight: 300;
 }
-.weather-widget .icon.clear-night {
-  background-image: url("img/clear-night.png");
+div.weather.widget section.hourly div.hour span.temperature {
+  bottom: 0;
+  font-size: 24px;
+  color: #3B3F47;
+  font-weight: 300;
 }
-.weather-widget .icon.clear-day {
-  background-image: url("img/clear-day.png");
+div.weather.widget section.hourly div.hour.five {
+  width: 20%;
 }
-.weather-widget .icon.cloudy {
-  background-image: url("img/cloudy.png");
+div.weather.widget .expand-wrapper.hide {
+  display: none;
 }
-.weather-widget .icon.sleet {
-  background-image: url("img/sleet.png");
+div.weather.widget section.forecasts {
+  margin-top: 15px;
 }
-.weather-widget .icon.rain {
-  background-image: url("img/rain.png");
+div.weather.widget section.forecasts header.forecast {
+  font-size: 14px;
+  color: #9B9B9B;
+  font-weight: 500;
 }
-.weather-widget .icon.snow {
-  background-image: url("img/snow.png");
+div.weather.widget section.forecasts div.forecast {
+  font-size: 18px;
+  color: #3B3F47;
 }
-.weather-widget .icon.wind {
-  background-image: url("img/wind.png");
+div.weather.widget section.forecasts div.forecast .high, div.weather.widget section.forecasts div.forecast .low {
+  font-weight: 300;
 }
-.weather-widget .icon.fog {
-  background-image: url("img/fog.png");
+div.weather.widget section.forecasts .forecast {
+  position: relative;
+  height: 32px;
+  width: 100%;
+}
+div.weather.widget section.forecasts .forecast img, div.weather.widget section.forecasts .forecast span {
+  position: absolute;
+  top: 0;
+}
+div.weather.widget section.forecasts .forecast span {
+  line-height: 32px;
+  height: 100%;
+}
+div.weather.widget section.forecasts .forecast span.day {
+  left: 0;
+}
+div.weather.widget section.forecasts .forecast span.high {
+  right: 40px;
+}
+div.weather.widget section.forecasts .forecast span.low {
+  right: 0;
+}
+div.weather.widget section.forecasts .forecast img.icon {
+  left: 170px;
+  height: 32px;
+  width: 32px;
 }
 
 /*# sourceMappingURL=weather-widget.css.map */

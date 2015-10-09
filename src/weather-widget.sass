@@ -1,144 +1,153 @@
 @import url('//fonts.googleapis.com/css?family=Roboto:300,400')
 
-$margin-small: 4px
-$margin-medium: 8px
-$margin-large: 16px
+body
+    padding: 0
+    margin: 0
 
-.weather-widget
-    -webkit-text-size-adjust: none
-    font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif
-    font-weight: 300
-    padding: 15px 15px 0 15px
-    clear: left
-    br
-        clear: both
-    p.title
-        font-size: 20px
-        margin: 10px 0 5px 0
-        font-weight: 400
-    .header
-        height: 50px
-        font-size: 17px
-        display: block
-        float: left
-        margin-bottom: 25px
-        width: 100%
-        >div
-            float: left
-            box-sizing: border-box
-            padding: 10px
-            span
-                &:first-child
-                    font-size: 22px
-                &:last-child
-                    color: darkgrey
-        span
-            display: block
-        .icon
-            height: 72px
+
+$padding: 16px
+
+$text_dark: #3B3F47
+$text_medium: #9B9B9B
+
+$text_interactive: #0087CB
+
+div.weather.widget
+    font-family: 'Roboto', sans-serif
+    padding: $padding
+    color: $text_dark
+
+    header.title
+        position: relative
+
+        h2.name
+            font-weight: 300
             margin: 0
-            display: block
-            width: 20%
-            background-size: auto 100%
-            background-repeat: no-repeat
-            background-position: top left
-            float: left
-    .hourly
-        div
-            width: 22%
-            float: left
-            text-align: center
-            &:first-child
-                width: 12%
-                margin-right: 3%
-            &:last-child
-                width: 12%
-                margin-left: 3%
-        span
-            display: block
-            &:first-child
-                font-size: 14px
-                color: darkgrey
-    .daily
-        &.active
-            div
-                display: block
-            .less
-                display: block
-                color: darkgrey
-                text-decoration: underline
-                width: 100%
-            .daily-title
-                span
-                    display: inline-block
-                    &:first-child
-                        text-decoration: none
-        .less
-            display: none
-            font-size: 14px
-            margin-bottom: 0
-            line-height: 1
-            margin-top: 10px
-        div
-            width: 100%
-            clear: left
-            height: 32px
-            float: left
-            display: none
-            &.daily-title
-                font-size: 14px
-                margin-top: 8px
-                display: block
-                span
-                    width: 15%
-                    display: none
-                    text-align: center
-                    &:first-child
-                        width: 70%
-                        text-align: left
-                        display: inline-block
-                        text-decoration: underline
+            font-size: 24px
 
-        span
-            display: inline-block
+        span.description
+            margin-top: 8px
+            color: $text_medium
+            font-weight: 500
+            font-size: 14px
+
+        a.expand
+            font-size: 14px
+            position: absolute
+            right: 0
+            top: 5px
+            color: $text_interactive
+            text-decoration: none
+
+            &.more::before
+                content: '+ '
+
+            &.less::before
+                content: '- '
+
+    section.current
+        position: relative
+
+        img.icon
+            width: 96px
+            height: 96px
+
+        span.temperature
+            font-size: 24px
+            color: $text_dark
+            font-weight: 300
+
+            position: absolute
+            top: 24px
+
+        span.description
+            font-size: 18px
+            color: $text_medium
+            font-weight: 300
+
+            position: absolute
+            top: 52px
+
+
+    section.hourly
+        position: relative
+        height: 100px
+
+        div.hour
+            position: relative
+            height: 100%
             float: left
-            margin-bottom: 8px
-            line-height: 2.5
-            &.day
-                width: 30%
-                font-weight: 400
-                font-size: 16px
-            &.icon
-                width: 40%
-                height: 32px
-                background-size: auto 100%
-                background-repeat: no-repeat
-                background-position: center
-            &.max, &.min
-                width: 15%
+
+            img.icon
+                width: 48px
+                height: 48px
+                position: absolute
+                top: 25px
+                left: 50%
+                margin-left: -24px
+
+            span
+                position: absolute
+                width: 100%
                 text-align: center
-    .icon
-        width: 48px
-        height: 48px
-        background-size: 100%
-        margin: $margin-small auto
-        &.partly-cloudy-night
-            background-image: url('img/partly-cloudy-night.png')
-        &.partly-cloudy-day
-            background-image: url('img/partly-cloudy-day.png')
-        &.clear-night
-            background-image: url('img/clear-night.png')
-        &.clear-day
-            background-image: url('img/clear-day.png')
-        &.cloudy
-            background-image: url('img/cloudy.png')
-        &.sleet
-            background-image: url('img/sleet.png')
-        &.rain
-            background-image: url('img/rain.png')
-        &.snow
-            background-image: url('img/snow.png')
-        &.wind
-            background-image: url('img/wind.png')
-        &.fog
-            background-image: url('img/fog.png')
+
+
+                &.time
+                    top: 0
+                    font-size: 16px
+                    color: $text_medium
+                    font-weight: 300
+
+                &.temperature
+                    bottom: 0
+                    font-size: 24px
+                    color: $text_dark
+                    font-weight: 300
+
+
+            &.five
+                width: 20%
+
+    .expand-wrapper
+        &.hide
+            display: none
+
+    section.forecasts
+        margin-top: 15px
+
+        header.forecast
+            font-size: 14px
+            color: $text_medium
+            font-weight: 500
+
+        div.forecast
+            font-size: 18px
+            color: $text_dark
+
+            .high, .low
+                font-weight: 300
+
+        .forecast
+            position: relative
+            height: 32px
+            width: 100%
+
+            img, span
+                position: absolute
+                top: 0
+
+            span
+                line-height: 32px
+                height: 100%
+
+                &.day
+                    left: 0
+                &.high
+                    right: 40px
+                &.low
+                    right: 0
+
+            img.icon
+                left: 170px
+                height: 32px
+                width: 32px

@@ -4,12 +4,6 @@
  * License: MIT
  */
  
-/*
- * jQuery Weather Widget
- * 2015 Matt O'Connell <mattoconnell408@gmail.com> 
- * License: MIT
- */
- 
 (function($, ls) {
 	"use strict";
 
@@ -116,17 +110,71 @@
 			hourly = apiData.hourly.data,
 			daily = apiData.daily.data,
 			_ = this,
-			currentTemp = Math.round(shouldConvert ? convert(currently.temperature) : currently.temperature),
-			$header = $(
-				'<p class="title">Local Weather</p>' +
-				'<div class="header">' +
-				'<span class="icon ' + currently.icon + '"></span>' +
-				'<div><span>' + currentTemp + '&deg;</span>' +
-				'<span>' + currently.summary + '</span></div>' +
-				'</div>'
-			),
-			$hourly = $('<div class="hourly"></div>'),
-			$daily = $('<div class="daily"></div>');
+
+
+			currentTemp = Math.round(shouldConvert ? convert(currently.temperature) : currently.temperature);
+
+
+		var $widget = $('<div>')
+			.addClass('widget')
+			.addClass('weather');
+
+		/* Main Header */
+		var $header = $('<header>').addClass('title');
+
+		var $expandButton = 
+			$('<a>')
+				.addClass('expand')
+				.addClass('more')
+				.attr('href', '#')
+				.text('7 Day Forecast');
+
+		$header.append(
+			$('<h2>')
+				.addClass('name')
+				.text('Local Weather')
+		).append(
+			$('<span>')
+				.addClass('description')
+				.text('Current Conditions')
+		).append(
+			$expandButton
+		);
+		$widget.append($header);
+
+		/* Current Section */
+		var $current = $('<section>').addClass('current');
+		$current.append(
+			$('<img>')
+				.addClass('icon')
+				.attr('src', 'dist/img/' + currently.icon + '.png')
+		).append(
+			$('<span>')
+				.addClass('temperature')
+				.html(currentTemp + '&deg;F')
+		).append(
+			$('<span>')
+				.addClass('description')
+				.text(currently.summary)
+		)
+		$widget.append($current);
+
+
+		/* Hours Section */
+		var $hourly = $('<section>').addClass('hourly');
+
+		var hourPrototype = $('<div>')
+			.addClass('hour')
+			.addClass('five')
+			.append(
+				$('<span>').addClass('time')
+			)
+			.append(
+				$('<img>').addClass('icon')
+			)
+			.append(
+				$('<span>').addClass('temperature')
+			);
 
 		for(var i = 0; i < 5; i++) {
 			var temp = Math.round(hourly[i + 1].temperature),
@@ -141,19 +189,49 @@
 			hour = hour % 12;
 			hour = hour ? hour : 12;
 
-			$hourly
-				.append($(
-					'<div><span class="time">' + hour + ampm + '</span>' +
-					'<span class="icon ' + icon + '"></span>' +
-					'<span class="temp">' + temp + '&deg;</span></div>'
-				));
-		}
+			var hourClone = hourPrototype.clone();
 
-		$daily.append($(
-			'<div class="daily-title">' +
-			'<span>7 Day Forecast</span><span>High</span><span>Low</span><br>' +
-			'</div>'
-		));
+			hourClone.find('.time')
+				.text(hour + ampm);
+
+			hourClone.find('.icon')
+				.attr('src', 'dist/img/' + icon + '.png');
+
+			hourClone.find('.temperature')
+				.html(temp + '&deg;');
+
+			$hourly.append(hourClone);
+		}
+		$widget.append($hourly);
+
+		/* Forecast Section */
+		var $expandWrapper = $('<div>')
+			.addClass('expand-wrapper')
+			.addClass('hide');
+
+		var $forecasts = $('<section>').addClass('forecasts');
+
+		$forecasts.append(
+			$('<header>')
+				.addClass('forecast')
+				.append(
+					$('<span>')
+						.addClass('day')
+						.text('7 Day Forecast')
+				)
+				.append(
+					$('<span>')
+						.addClass('high')
+						.text('High')
+				)
+				.append(
+					$('<span>')
+						.addClass('low')
+						.text('Low')
+				)
+		);
+
+
 		for(var k = 0; k < 7; k++) {
 			var day = days[new Date(daily[k + 1].time * 1000).getDay()],
 				icon = daily[k + 1].icon,
@@ -161,27 +239,48 @@
 				min = Math.round(daily[k + 1].temperatureMin);
 			max = shouldConvert ? convert(max) : max;
 			min = shouldConvert ? convert(min) : min;
-			$daily
-				.append($(
-					'<div><span class="day">' + day + '</span>' +
-					'<span class="icon ' + icon + '"></span>' +
-					'<span class="max">' + max + '&deg;</span>' +
-					'<span class="min">' + min + '&deg;</span></div>'
-				));
-		}
-		var $less = $('<span class="less">Less</span><br>');
-		$daily.append($less);
-		$less.click(function() {
-		    $daily.removeClass('active');
-		});
-		$daily.find('.daily-title:first-child').click(function() {
-		    $daily.addClass('active');
-		});
 
-		var $widget = _.$el
-			.append($header)
-			.append($hourly)
-			.append($daily);
+			$forecasts.append(
+				$('<div>')
+					.addClass('forecast')
+					.append(
+						$('<span>')
+							.addClass('day')
+							.text(day)
+					)
+					.append(
+						$('<img>')
+							.addClass('icon')
+							.attr('src', 'dist/img/' + icon + '.png')
+					)
+					.append(
+						$('<span>')
+							.addClass('high')
+							.html(max + '&deg;')
+					)
+					.append(
+						$('<span>')
+							.addClass('low')
+							.html(min + '&deg;')
+					)
+			);
+		}
+
+		$expandWrapper.append($forecasts);
+		$widget.append($expandWrapper);
+
+
+		$expandButton.on('click', function(){
+
+			if ($expandWrapper.hasClass('hide')) {
+				$expandButton.removeClass('more').addClass('less');
+				$expandWrapper.slideDown().removeClass('hide');
+			} else {
+				$expandButton.removeClass('less').addClass('more');
+				$expandWrapper.slideUp().addClass('hide');
+			}
+
+		});
 
 		_.$el.append($widget);
 	};
