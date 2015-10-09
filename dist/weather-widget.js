@@ -115,6 +115,8 @@
 			currentTemp = Math.round(shouldConvert ? convert(currently.temperature) : currently.temperature);
 
 
+		var symbol = this.options.celsius ? 'C' : 'F';
+
 		var $widget = $('<div>')
 			.addClass('widget')
 			.addClass('weather');
@@ -151,7 +153,7 @@
 		).append(
 			$('<span>')
 				.addClass('temperature')
-				.html(currentTemp + '&deg;F')
+				.html(currentTemp + '&deg;' + symbol)
 		).append(
 			$('<span>')
 				.addClass('description')
