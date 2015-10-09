@@ -271,10 +271,10 @@
 			e.preventDefault();
 			if ($expandWrapper.hasClass('hide')) {
 				$expandButton.removeClass('more').addClass('less');
-				$expandWrapper.slideDown().removeClass('hide');
+				$expandWrapper.stop().slideDown().removeClass('hide');
 			} else {
 				$expandButton.removeClass('less').addClass('more');
-				$expandWrapper.slideUp().addClass('hide');
+				$expandWrapper.stop().slideUp().addClass('hide');
 			}
 		});
 
