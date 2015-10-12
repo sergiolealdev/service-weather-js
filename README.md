@@ -52,14 +52,12 @@ Initialize widget
 * A forecast.io api key is needed. Get yours at https://developer.forecast.io/ *
 
 ```javascript
-<script>
 $('.my-class').weatherWidget({
     cacheTime: 20,
     lat: 40.748441,
     lon: -73.985793,
     key: '**********'
 });
-</script>
 ```
 
 Option | Type | Default | Description
@@ -76,13 +74,11 @@ imgPath|string|'bower_components/weather-widget/dist/img/'|path to img files
 ### Make bare requests without widget
 
 ```javascript
-<script>
-  $.weatherWidget.pollAPI({
-      cacheTime: 0,
-      lat: 40.748441,
-      lon: -73.985793
-  }, function(data) {
-      console.log('here\'s some data: ', data);
-  });
-</script>
+$.weatherWidget.pollAPI({
+  cacheTime: 0,
+  lat: 40.748441,
+  lon: -73.985793
+}, function(data) {
+  console.log('here\'s some data: ', data);
+});
 ```
