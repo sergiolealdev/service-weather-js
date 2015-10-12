@@ -70,6 +70,7 @@ key|string|null|Forecast.io API key
 cacheTime|int|30|How long we should cache the API results in minutes. Not applicable if local-storage-lite script is included
 geoLocate|bool|true|Whether or not we should attempt to geolocate. Not applicable if geolocate-lite script is not included
 celsius|bool|false|Set to true to convert results to celsius
+imgPath|string|'bower_components/weather-widget/dist/img/'|path to img files
 
 
 ### Make bare requests without widget
