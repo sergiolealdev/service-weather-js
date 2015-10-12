@@ -150,7 +150,7 @@
 		$current.append(
 			$('<img>')
 				.addClass('icon')
-				.attr('src', _.options.imgPath + currently.icon + '.png')
+				.attr('src', _.options.imgPath + currently.icon + '.svg')
 		).append(
 			$('<span>')
 				.addClass('temperature')
@@ -198,7 +198,7 @@
 				.text(hour + ampm);
 
 			hourClone.find('.icon')
-				.attr('src', _.options.imgPath + icon + '.png');
+				.attr('src', _.options.imgPath + icon + '.svg');
 
 			hourClone.find('.temperature')
 				.html(temp + '&deg;');
@@ -254,7 +254,7 @@
 					.append(
 						$('<img>')
 							.addClass('icon')
-							.attr('src', _.options.imgPath + icon + '.png')
+							.attr('src', _.options.imgPath + icon + '.svg')
 					)
 					.append(
 						$('<span>')
@@ -277,10 +277,10 @@
 			e.preventDefault();
 			if ($expandWrapper.hasClass('hide')) {
 				$expandButton.removeClass('more').addClass('less');
-				$expandWrapper.slideDown().removeClass('hide');
+				$expandWrapper.stop().slideDown().removeClass('hide');
 			} else {
 				$expandButton.removeClass('less').addClass('more');
-				$expandWrapper.slideUp().addClass('hide');
+				$expandWrapper.stop().slideUp().addClass('hide');
 			}
 		});
 
