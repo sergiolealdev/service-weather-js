@@ -70,8 +70,8 @@
 	 * Main API polling function
 	 */
 	WeatherWidget.prototype.pollAPI = function(options, callback) {
+		options = $.extend(defaults, options);
 		var _ = this,
-			options = $.extend(defaults, options),
 			url = _.makeURL(options),
 			data = ls ? ls.get(url, options.cacheTime) : false;
 		_.options = options;
@@ -85,8 +85,12 @@
 			success: function(data) {
 				if(ls)
 					ls.set(url, data);
-				if(callback) {
-					callback.call(_, data);
+				try {
+					if(callback) {
+						callback.call(_, data);
+					}
+				} catch(e) {
+					console.log('Error: ', e);
 				}
 			},
 			error: function(e) {
