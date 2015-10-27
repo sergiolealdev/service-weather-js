@@ -19,9 +19,7 @@
 			_.pollAPI(customOptions, _.makeWidget);
 		};
 
-		if(_.defaults.geoLocate
-			&& typeof geoLite !== 'undefined'
-			&& geoLite.locateOnLoad) {
+		if(_.defaults.geoLocate && typeof geoLite !== 'undefined' && typeof geoLite === 'object' && !geoLite.wait) {
 				document.body.addEventListener('onLocateSuccess', function() {
 					var coords = {
 						lat: geoLite.lat,
@@ -90,6 +88,7 @@
 						callback.call(_, data);
 					}
 				} catch(e) {
+					_.$el.hide();
 					console.log('Error: ', e);
 				}
 			},
