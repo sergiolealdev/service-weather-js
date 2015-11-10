@@ -47,7 +47,8 @@
 		cacheTime: 30,
 		geoLocate: true,
 		celsius: false,
-		imgPath: 'bower_components/weather-widget/dist/img/'
+		imgPath: 'bower_components/weather-widget/dist/img/',
+		showTitle: true
 	};
 
 	/*
@@ -146,7 +147,10 @@
 		).append(
 			$expandButton
 		);
-		$widget.append($header);
+
+		if(_.options.showTitle) {
+			$widget.append($header);
+		}
 
 		/* Current Section */
 		var $current = $('<section>').addClass('current');
@@ -162,7 +166,7 @@
 			$('<span>')
 				.addClass('description')
 				.text(currently.summary)
-		)
+		);
 		$widget.append($current);
 
 
