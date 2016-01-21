@@ -7,7 +7,7 @@
     "local-storage-lite": "*",
     "geolocate-lite": "*"
   },
-  "homepage": "https://github.com/BlueBiteLLC/Weather-Widget.git",
+  "homepage": "https://github.com/BlueBiteLLC/service-weather-js.git",
   "authors": [
     "Matt O'Connell <mattoconnell408@gmail.com>"
   ],

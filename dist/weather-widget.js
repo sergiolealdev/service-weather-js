@@ -1,6 +1,6 @@
 /*
  * jQuery Weather Widget
- * 2015 Matt O'Connell <mattoconnell408@gmail.com> 
+ * 2016 Matt O'Connell <mattoconnell408@gmail.com> 
  * License: MIT
  */
  
@@ -43,7 +43,7 @@
 		lat: '40.748441',
 		lon: '-73.985793',
 		url: 'https://api.forecast.io/forecast/',
-		key: '50efc01999c6c329ae64ade7449047fe',
+		key: null,
 		cacheTime: 30,
 		geoLocate: true,
 		celsius: false,
