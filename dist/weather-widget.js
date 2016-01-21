@@ -43,7 +43,7 @@
 		lat: '40.748441',
 		lon: '-73.985793',
 		url: 'https://api.forecast.io/forecast/',
-		key: null,
+		key: '50efc01999c6c329ae64ade7449047fe',
 		cacheTime: 30,
 		geoLocate: true,
 		celsius: false,
