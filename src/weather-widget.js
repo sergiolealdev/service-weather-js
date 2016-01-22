@@ -42,7 +42,8 @@
 		geoLocate: true,
 		celsius: false,
 		imgPath: 'bower_components/weather-widget/dist/img/',
-		showTitle: true
+		showTitle: true,
+		localeDetect: false
 	};
 
 	/*
@@ -104,17 +105,28 @@
 	];
 
 	WeatherWidget.prototype.makeWidget = function(apiData) {
-		var shouldConvert = this instanceof WeatherWidget && this.options.celsius ? true : false,
-			currently = apiData.currently,
+
+		var shouldConvert = false;
+		// If localeDetect is set, convert if not US
+		if(this.options.localeDetect) {
+			var locale = navigator.language || 'en-us';
+			if(!~locale.toLowerCase().indexOf('en-us')) {
+				shouldConvert = true;
+			}
+		}
+
+		// If Celsius option is set, convert
+		if(this.options.celsius) {
+			shouldConvert = true;
+		}
+
+		var currently = apiData.currently,
 			hourly = apiData.hourly.data,
 			daily = apiData.daily.data,
 			_ = this,
-
-
 			currentTemp = Math.round(shouldConvert ? convert(currently.temperature) : currently.temperature);
 
-
-		var symbol = this.options.celsius ? 'C' : 'F';
+		var symbol = shouldConvert ? 'C' : 'F';
 
 		var $widget = $('<div>')
 			.addClass('widget')
